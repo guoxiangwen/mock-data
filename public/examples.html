@@ -1,12 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>示例</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/examples" rel="stylesheet">
-    </head>
-    <body>
-        
-    </body>
+
+<head>
+    <title>示例</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/examples.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <ol>
+            <li v-for="item in navBar">
+                <a @click="handleClick(item.url,$event)" v-text="item.name"></a>
+            </li>
+        </ol>
+        <section v-text="currentApi">
+        </section>
+    </main>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    
+    <script>
+        var app = new Vue({
+            el: 'main',
+            data: {
+                navBar:[
+                    {id:1,name:'list1',url:'./api/list'},
+                    {id:2,name:'list2',url:'./api/list'},
+                    {id:3,name:'list3',url:'./api/list'},
+                    {id:4,name:'list4',url:'./api/list'},
+                    {id:5,name:'list5',url:'./api/list'},
+                ],
+                currentApi:'',
+            },
+            methods: {
+                handleClick:function(url,e){
+                    console.log(url);
+                    console.log(e);
+                    $.ajax({
+                        url:url,
+                        type:'get',
+                        success:function (data) {
+                            app.currentApi = JSON.stringify(data);
+                            console.log(typeof JSON.stringify(data));
+                        },
+                        error:function(err){
+                            app.currentApi = err;
+                        }
+                    })
+                }
+            },
+            computed:{
+                
+            }
+
+        })
+    </script>
+</body>
+
 </html>

@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 30px 50px;
+}
+
+main ol {
+    width: 5%;
+}
+
+main ol li {
+    list-style-type: none;
+    line-height: 3;
+}
+
+main ol li a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+main section {
+    width: 90%;
+    height: auto;
+    text-align: center;
+    
+}
